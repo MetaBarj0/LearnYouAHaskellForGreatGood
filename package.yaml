@@ -1,0 +1,50 @@
+name:                LearnYouAHaskellForGreatGood
+version:             0.1.0.0
+github:              "MetaBarj0/LearnYouAHaskellForGreatGood"
+license:             BSD3
+author:              "MetaBarj0"
+maintainer:          "troctsch.cpp@gmail.com"
+copyright:           "pasteleft"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            super secret, don&#39;t need to know
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/MetaBarj0/LearnYouAHaskellForGreatGood#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  dependencies:
+  - random
+
+executables:
+  LearnYouAHaskellForGreatGood-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - LearnYouAHaskellForGreatGood
+
+tests:
+  LearnYouAHaskellForGreatGood-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - LearnYouAHaskellForGreatGood
