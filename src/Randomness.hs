@@ -50,5 +50,5 @@ randomn' :: (Random a, RandomGen g) => Int -> g -> ([a], g)
 randomn' = flip randomn
 
 ioRandomN :: (Random a) => Int -> IO [a]
-ioRandomN n = fst . randomn' n <$> getStdGen
+ioRandomN n = fst . randomn' n <$> newStdGen
 
