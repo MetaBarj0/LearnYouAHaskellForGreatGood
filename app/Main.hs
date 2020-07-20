@@ -1,6 +1,6 @@
 module Main where
 
-import Lib
+import ByteStrings
 
 main :: IO ()
-main = someFunc
+main = copyFile

@@ -26,6 +26,8 @@ library:
   source-dirs: src
   dependencies:
   - random
+  - bytestring
+  - directory
 
 executables:
   LearnYouAHaskellForGreatGood-exe:
