@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 4268035bdde7e863672909147d1ca5eea1c79654e643cfdd77cfe607976db9b1
+-- hash: cfa21c54bee843bd0d579fa760ec611e816a3f8559500b22f31035f5b36adab3
 
 name:           LearnYouAHaskellForGreatGood
 version:        0.1.0.0
@@ -30,6 +30,7 @@ library
       ByteStrings
       Lib
       Randomness
+      ReversePolish
   other-modules:
       Paths_LearnYouAHaskellForGreatGood
   hs-source-dirs:
