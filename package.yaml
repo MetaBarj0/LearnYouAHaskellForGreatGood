@@ -1,7 +1,7 @@
 name:                LearnYouAHaskellForGreatGood
 version:             0.1.0.0
 github:              "MetaBarj0/LearnYouAHaskellForGreatGood"
-license:             BSD3
+license:             MIT
 author:              "MetaBarj0"
 maintainer:          "troctsch.cpp@gmail.com"
 copyright:           "pasteleft"
