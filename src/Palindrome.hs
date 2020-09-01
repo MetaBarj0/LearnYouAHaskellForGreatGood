@@ -10,6 +10,7 @@ module Palindrome
     foldWriter3,
     foldWriter4,
     foldWriter5,
+    filterOutUnneeded3,
   )
 where
 
@@ -48,7 +49,7 @@ isPalindrome' = verifyPalindromness' . normalizeInput'
   where
     normalizeInput' :: String -> Maybe String
     normalizeInput' "" = Nothing
-    normalizeInput' input = Just (filterOutUnneeded'' $ lowercase' input)
+    normalizeInput' input = Just (filterOutUnneeded' $ lowercase' input)
     verifyPalindromness' :: Maybe String -> Bool
     verifyPalindromness' Nothing = False
     verifyPalindromness' (Just input) = input == reverse input
@@ -80,6 +81,26 @@ filterOutUnneeded2 input = do
   where
     guardCheck :: Char -> Bool
     guardCheck i = foldr (\f -> (&& f i)) True predicates
+    predicates = map (/=) ",?;.:! "
+
+filterOutUnneeded3 :: String -> IO String
+filterOutUnneeded3 input =
+  foldr
+    ( \char acc -> do
+        str <- acc
+        check <- eliminatePunctuation char
+        guard check
+        putStrLn $ "=> " ++ show char
+        return $ char : str
+    )
+    init
+    input
+  where
+    init :: IO String
+    init = return ""
+    eliminatePunctuation :: Char -> IO Bool
+    eliminatePunctuation c = return $ foldr (\f -> (&& f c)) True predicates
+    predicates :: [Char -> Bool]
     predicates = map (/=) ",?;.:! "
 
 -- WriterT stuff...
