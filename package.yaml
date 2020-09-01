@@ -28,6 +28,7 @@ library:
   - random
   - bytestring
   - directory
+  - mtl
 
 executables:
   LearnYouAHaskellForGreatGood-exe:
