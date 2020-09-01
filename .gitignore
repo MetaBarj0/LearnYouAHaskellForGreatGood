@@ -1,2 +1,4 @@
 .stack-work/
 LearnYouAHaskellForGreatGood.cabal
+stack.yaml
+stack.yaml.lock
