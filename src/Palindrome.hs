@@ -48,7 +48,7 @@ isPalindrome' = verifyPalindromness' . normalizeInput'
   where
     normalizeInput' :: String -> Maybe String
     normalizeInput' "" = Nothing
-    normalizeInput' input = Just (filterOutUnneeded' $ lowercase' input)
+    normalizeInput' input = Just (filterOutUnneeded'' $ lowercase' input)
     verifyPalindromness' :: Maybe String -> Bool
     verifyPalindromness' Nothing = False
     verifyPalindromness' (Just input) = input == reverse input
