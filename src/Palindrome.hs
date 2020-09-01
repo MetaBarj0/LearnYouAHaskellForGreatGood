@@ -10,7 +10,6 @@ module Palindrome
     foldWriter3,
     foldWriter4,
     foldWriter5,
-    filterOutUnneeded3,
   )
 where
 
@@ -81,31 +80,6 @@ filterOutUnneeded2 input = do
   where
     guardCheck :: Char -> Bool
     guardCheck i = foldr (\f -> (&& f i)) True predicates
-    predicates = map (/=) ",?;.:! "
-
-filterOutUnneeded3 :: String -> String
-filterOutUnneeded3 input = do
-  i <- input
-  guardCheck <- guardCheckLog i
-  guard guardCheck
-  return i
-  where
-    guardCheckLog :: Char -> Writer [String] Bool
-    guardCheckLog i = do
-      foldedValue <-
-        foldr
-          ( \f log -> do
-              v <- log
-              tell ["Folding."]
-              return (v && f i)
-          )
-          initLog
-          predicates
-      tell ["End."]
-      return foldedValue
-    initLog = do
-      tell ["Begin."]
-      return True
     predicates = map (/=) ",?;.:! "
 
 -- WriterT stuff...
