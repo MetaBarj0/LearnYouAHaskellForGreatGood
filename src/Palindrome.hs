@@ -14,7 +14,6 @@ module Palindrome
   )
 where
 
-import Control.Monad
 import Control.Monad.Writer
 import Data.Char
 
@@ -84,22 +83,20 @@ filterOutUnneeded2 input = do
     predicates = map (/=) ",?;.:! "
 
 filterOutUnneeded3 :: String -> IO String
-filterOutUnneeded3 input =
+filterOutUnneeded3 =
   foldr
     ( \char acc -> do
         str <- acc
-        check <- eliminatePunctuation char
-        guard check
+        guard $ eliminatePunctuation char
         putStrLn $ "=> " ++ show char
         return $ char : str
     )
     init
-    input
   where
     init :: IO String
     init = return ""
-    eliminatePunctuation :: Char -> IO Bool
-    eliminatePunctuation c = return $ foldr (\f -> (&& f c)) True predicates
+    eliminatePunctuation :: Char -> Bool
+    eliminatePunctuation c = foldr (\f -> (&& f c)) True predicates
     predicates :: [Char -> Bool]
     predicates = map (/=) ",?;.:! "
 
